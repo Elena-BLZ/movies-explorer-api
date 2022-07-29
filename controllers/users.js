@@ -116,4 +116,3 @@ module.exports.editUserProfile = (req, res, next) => {
       } else { next(err); }
     });
 };
-
