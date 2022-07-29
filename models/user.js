@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
     minlength: [2, 'Слишком короткое имя. Нужно минимум 2 символа.'],
     maxlength: [30, 'Слишком длинное имя. Должно быть не длиннее 30 символов.'],
     default: 'Елена',
