@@ -15,9 +15,15 @@ const { MONGO_URL } = require('./config');
 
 const options = {
   origin: [
+    'https://praktikum.tk',
+    'http://praktikum.tk',
     'http://localhost:3000',
-    'https://mesto.blz.nomoredomains.xyz',
+    'https://api.movies.blz.nomoredomains.xyz',
+    'http://api.movies.blz.nomoredomains.xyz',
+    'https://movies.blz.nomoredomains.xyz',
+    'http://movies.blz.nomoredomains.xyz',
     'https://Elena-BLZ.github.io',
+    'http://Elena-BLZ.github.io',
   ],
   credentials: true, // эта опция позволяет устанавливать куки
 };
