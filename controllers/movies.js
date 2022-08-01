@@ -14,7 +14,7 @@ module.exports.getSavedMovies = (req, res, next) => {
 };
 
 // создаёт фильм с переданными в теле
-// country, director, duration, year, description, image, trailer,
+// country, director, duration, year, description, image, trailerLink,
 // nameRU, nameEN, thumbnail, movieId
 // POST /movies
 module.exports.createMovie = (req, res, next) => {
@@ -25,7 +25,7 @@ module.exports.createMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
     thumbnail,
@@ -39,7 +39,7 @@ module.exports.createMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
     thumbnail,

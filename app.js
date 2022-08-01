@@ -11,6 +11,7 @@ const { PORT = 3000 } = process.env;
 const { errorProcessor } = require('./middlewares/error-processor');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes/index');
+const { MONGO_URL } = require('./config');
 
 const options = {
   origin: [
@@ -21,7 +22,7 @@ const options = {
   credentials: true, // эта опция позволяет устанавливать куки
 };
 
-mongoose.connect('mongodb://localhost:27017/moviesdb');
+mongoose.connect(MONGO_URL);
 
 const app = express();
 

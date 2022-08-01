@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { loginJoi, usersJoi } = require('../middlewares/celebrate');
+const { loginJoi, usersJoi } = require('../middlewares/validation');
 const NotFoundError = require('../errors/not-found-err');
 
 const { auth } = require('../middlewares/auth');

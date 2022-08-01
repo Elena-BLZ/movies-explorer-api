@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { userInfoJoi } = require('../middlewares/celebrate');
+const { userInfoJoi } = require('../middlewares/validation');
 
 const {
   editUserProfile, getCurrentUser,
