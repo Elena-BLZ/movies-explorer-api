@@ -4,6 +4,6 @@
 
 Backend для проекта Movies Explorer.
 
-api.movies.blz.nomoredomains.xyz
+https://api.movies.blz.nomoredomains.xyz/
 
 Елена Блаженских, 2022
