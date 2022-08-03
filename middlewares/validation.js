@@ -1,6 +1,12 @@
 const { celebrate, Joi } = require('celebrate');
+const validator = require('validator');
 
-const urlRegEx = /https?:\/\/(www\.)?([\w-]+\.)+[\w]+[\w.\-~:/?#[\]@!$&'()*+,;=]+#?/i;
+const checkURL = (value, helpers) => {
+  if (validator.isURL(value)) {
+    return value;
+  }
+  return helpers.message('Это не похоже на ссылку!');
+};
 
 module.exports.usersJoi = celebrate({
   body: Joi.object().keys({
@@ -31,10 +37,10 @@ module.exports.moviesJoi = celebrate({
     duration: Joi.number().integer().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().required().pattern(urlRegEx),
-    trailerLink: Joi.string().required().pattern(urlRegEx),
-    thumbnail: Joi.string().required().pattern(urlRegEx),
-    movieId: Joi.string().alphanum().length(24).required(),
+    image: Joi.string().required().custom(checkURL),
+    trailerLink: Joi.string().required().custom(checkURL),
+    thumbnail: Joi.string().required().custom(checkURL),
+    movieId: Joi.number().integer().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
   }),
@@ -42,6 +48,6 @@ module.exports.moviesJoi = celebrate({
 
 module.exports.movieIdJoi = celebrate({
   params: Joi.object().keys({
-    _id: Joi.string().alphanum().length(24),
+    _id: Joi.string().hex().length(24),
   }),
 });

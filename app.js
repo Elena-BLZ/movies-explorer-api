@@ -6,6 +6,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 
 const { PORT = 3000 } = process.env;
 const { errorProcessor } = require('./middlewares/error-processor');
@@ -28,11 +30,18 @@ const options = {
   credentials: true, // эта опция позволяет устанавливать куки
 };
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // за 15 минут
+  max: 100, // можно совершить максимум 100 запросов с одного IP
+});
+
 mongoose.connect(MONGO_URL);
 
 const app = express();
 
+app.use(limiter);
 app.use('*', cors(options));
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -5,4 +5,4 @@ module.exports.NOT_FOUND = 404;
 module.exports.EMAIL_CONFLICT = 409;
 module.exports.SERVER_ERROR = 500;
 module.exports.CREATED_CODE = 201;
-module.exports.MONGO_EMAIL_CONFLICT = 201;
+module.exports.MONGO_EMAIL_CONFLICT = 409;

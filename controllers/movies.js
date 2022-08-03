@@ -67,7 +67,7 @@ module.exports.delMovie = (req, res, next) => {
       if (foundMovie.owner.toString() !== req.user._id) {
         throw new ForbiddenError('Удалить можно только сохраненный фильм');
       }
-      Movie.deleteOne(foundMovie).then(() => res.send(foundMovie));
+      return Movie.deleteOne(foundMovie).then(() => res.send(foundMovie));
     })
     .catch((err) => {
       if (err.name === 'CastError') {

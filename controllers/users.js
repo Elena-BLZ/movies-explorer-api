@@ -31,7 +31,7 @@ module.exports.createUser = (req, res, next) => {
   const {
     name, email, password,
   } = req.body;
-  User.findOne({ email })
+  User.findOne({ email }) // ищем пользователя, чтобы лишний раз не хешировать пароль
     .then((found) => {
       if (found) { throw new ConflictError('Такой email уже занят'); }
       bcrypt.hash(password, 10)
@@ -113,6 +113,8 @@ module.exports.editUserProfile = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new RequestError(err.message));
+      } else if (err.code === 11000) {
+        next(new ConflictError('Такой email уже занят'));
       } else { next(err); }
     });
 };
