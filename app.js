@@ -9,7 +9,7 @@ const { errors } = require('celebrate');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const { errorProcessor } = require('./middlewares/error-processor');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes/index');
@@ -20,10 +20,13 @@ const options = {
     'https://praktikum.tk',
     'http://praktikum.tk',
     'http://localhost:3000',
+    'https://localhost:3000',
+    'http://localhost:3001',
+    'https://localhost:3001',
     'https://api.movies.blz.nomoredomains.xyz',
     'http://api.movies.blz.nomoredomains.xyz',
-    'https://movies.blz.nomoredomains.xyz',
-    'http://movies.blz.nomoredomains.xyz',
+    'https://movies.blz.nomoredomains.xyz.nomoredomains.sbs',
+    'http://movies.blz.nomoredomains.xyz.nomoredomains.sbs',
     'https://Elena-BLZ.github.io',
     'http://Elena-BLZ.github.io',
   ],
